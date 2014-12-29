@@ -16,6 +16,9 @@
             this.setMethod = function (newMethod) {
                 _this.storagemethod = newMethod;
             };
+            this.listen = function (listener) {
+                window.addEventListener("storage", listener);
+            };
             this.setItem = function (key, value) {
                 var oldValue = _this.storagemethod.getItem(key),
                     event = new StorageEvent({

@@ -12,7 +12,7 @@
         </div>
         <script type="text/javascript" src="js/StorageEvents.js"></script>
         <script>
-            window.addEventListener("storage", function (e) {
+            storage.listen(function (e) {
                 console.log(e.key + ":\n\tOld Value: " + e.oldValue + "\n\tNew Value: " + e.newValue);
                 console.log(e);
                 document.getElementById("testContent").innerHTML += "<div>" + e + "</div>";
