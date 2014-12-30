@@ -21,12 +21,13 @@
             };
             this.setItem = function (key, value) {
                 var oldValue = _this.storagemethod.getItem(key),
+                    safeValue = typeof value === "object" ? JSON.stringify(value) : value,
                     event = new StorageEvent({
                         key: key,
-                        newValue: value,
+                        newValue: safeValue,
                         oldValue: oldValue
                     });
-                _this.storagemethod.setItem(key, value);
+                _this.storagemethod.setItem(key, safeValue);
                 window.dispatchEvent(event);
             };
             this.getItem = function (key) {
@@ -61,7 +62,7 @@
                     }));
                 }
                 _this.storagemethod.clear();
-                for (i = 0; i < _this.events.length; i++) {
+                for (i = 0; i < events.length; i++) {
                     window.dispatchEvent(events[i]);
                 }
             };
